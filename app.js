@@ -11,7 +11,7 @@ var crypto = require('crypto');
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var ejsEngine = require('ejs-locals');
+var expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var session = require('express-session')
 var methodOverride = require('method-override');
@@ -31,7 +31,8 @@ var routesUsers = require('./routes/users.js')
 
 // all environments
 app.set('port', process.env.PORT || 3001);
-app.engine('ejs', ejsEngine);
+app.use(expressLayouts);
+app.set('layout', 'layout');
 app.engine('dust', cons.dust);
 app.engine('hbs', hbs.__express);
 cons.dust.helpers = dustHelpers;
