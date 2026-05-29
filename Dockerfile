@@ -1,6 +1,7 @@
 # FROM node:6-stretch
-FROM node:18.13.0
+FROM node:18-bullseye
 
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 RUN mkdir /usr/src/goof
 RUN mkdir /tmp/extracted_files
 COPY . /usr/src/goof
