@@ -42,7 +42,9 @@ if (mongoCFUri) {
 
 console.log("Using Mongo URI " + mongoUri);
 
-mongoose.connect(mongoUri);
+mongoose.connect(mongoUri).catch(function(err) {
+  console.error('MongoDB connection error: ' + err);
+});
 
 User = mongoose.model('User');
 User.find({ username: 'admin@snyk.io' }).exec(function (err, users) {
